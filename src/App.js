@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import Home from './components/Home';
+import AddContact from './components/AddContact';
+import EditContact from './components/EditContact';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ToastContainer />
+      <h1 className='text-center bg-primary text-white p-5 mb-0'>Contact Application using React Redux</h1>
+
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/add">
+          <AddContact />
+        </Route>
+        <Route exact path="/edit/:id">
+          <EditContact />
+        </Route>
+        {/* <Route exact path='/edit/:id' component={Edit}/> */}
+      </Switch>
+    </Router>
+
+
   );
 }
 
